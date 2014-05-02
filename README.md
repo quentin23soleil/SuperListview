@@ -1,6 +1,5 @@
 SuperListview
 ====
-----
 
 
 ##Description
@@ -16,8 +15,12 @@ Features built in:
 
 ##Integration
 
-You'll soon be able to find it on maven central and add it to your build.gradle.
+Just add it to you dependencies
 
+```
+    compile 'com.quentindommerc.superlistview:library:0.1'
+
+```
 ##Usage
 
 -	Use directly SuperListview:
