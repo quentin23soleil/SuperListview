@@ -36,6 +36,7 @@ You'll soon be able to find it on maven central and add it to your build.gradle.
             superlistview:scrollbarStyle="outsideOverlay" >
     </com.quentindommerc.superlistview.SuperListview>
 ```
+####[Sample java](https://github.com/dommerq/SuperListview/blob/master/Sample/src/main/java/com/quentindommerc/superlistview/sample/MainActivity.java)
 
 ##License
 
