@@ -1,6 +1,5 @@
 apply plugin: 'android-library'
 
-
 repositories {
     mavenCentral()
 }
@@ -21,13 +20,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
     compile 'com.android.support:support-v4:+'
 }
 
-
-
-
-//apply from: '../maven_push.gradle'
+apply from: '../maven_push.gradle'
