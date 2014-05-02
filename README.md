@@ -1,5 +1,7 @@
 SuperListview
-====
+==============
+
+***Pull requests are answered with all my love and a cookie.***
 
 
 ##Description
@@ -39,7 +41,7 @@ Just add it to you dependencies
             superlistview:scrollbarStyle="outsideOverlay" >
     </com.quentindommerc.superlistview.SuperListview>
 ```
-####[Sample java](https://github.com/dommerq/SuperListview/blob/master/Sample/src/main/java/com/quentindommerc/superlistview/sample/MainActivity.java)
+####[Sample java][sample java]
 
 ##License
 
@@ -58,3 +60,4 @@ Just add it to you dependencies
     limitations under the License.
 
 [![Analytics](https://ga-beacon.appspot.com/UA-40136896-2/SuperListview/readme)](https://github.com/igrigorik/ga-beacon)
+[sample java]:https://github.com/dommerq/SuperListview/blob/master/Sample/src/main/java/com/quentindommerc/superlistview/sample/MainActivity.java
