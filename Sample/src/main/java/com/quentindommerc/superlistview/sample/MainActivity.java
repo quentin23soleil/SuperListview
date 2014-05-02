@@ -2,6 +2,7 @@ package com.quentindommerc.superlistview.sample;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -10,7 +11,6 @@ import com.quentindommerc.superlistview.OnMoreListener;
 import com.quentindommerc.superlistview.SuperListview;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefreshListener, OnMoreListener {
@@ -35,6 +35,9 @@ public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefre
         // Setting the refresh listener will enable the refresh progressbar
         mList.setRefreshListener(this);
 
+        // Wow so beautiful
+        mList.setRefreshingColor(android.R.color.holo_orange_light, android.R.color.holo_blue_light, android.R.color.holo_green_light, android.R.color.holo_red_light);
+
         // I want to get loadMore triggered if I see the last item (1)
         mList.setupMoreListener(this, 1);
     }
@@ -43,8 +46,18 @@ public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefre
     public void onRefresh() {
         Toast.makeText(this, "Refresh", Toast.LENGTH_LONG).show();
 
-        // demo purpose, adding to the top so you can see it
-        mAdapter.insert("New stuff", 0);
+        // enjoy the beaty of the progressbar
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+
+                // demo purpose, adding to the top so you can see it
+                mAdapter.insert("New stuff", 0);
+
+            }
+        }, 2000);
+
+
     }
 
     @Override

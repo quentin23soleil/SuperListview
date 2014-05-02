@@ -125,6 +125,13 @@ public class SuperListview extends FrameLayout implements AbsListView.OnScrollLi
         mList.setScrollBarStyle(mScrollbarStyle);
     }
 
+    /**
+     * Set the adapter to the listview
+     * Automativally hide the progressbar
+     * Set the refresh to false
+     * If adapter is empty, then the emptyview is shown
+     * @param adapter
+     */
     public void setAdapter(BaseAdapter adapter) {
         mList.setAdapter(adapter);
         mProgress.setVisibility(View.GONE);
@@ -149,50 +156,88 @@ public class SuperListview extends FrameLayout implements AbsListView.OnScrollLi
         }
     }
 
+    /**
+     * Remove the adapter from the listview
+     */
     public void clear() {
         mList.setAdapter(null);
     }
 
+    /**
+     * Show the progressbar
+     */
     public void showProgress() {
         hideList();
         mProgress.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Hide the progressbar and show the listview
+     */
     public void showList() {
         hideProgress();
         mList.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Set the listener when refresh is triggered and enable the SwipeRefreshLayout
+     * @param listener
+     */
     public void setRefreshListener(SwipeRefreshLayout.OnRefreshListener listener) {
         mPtrLayout.setEnabled(true);
         mPtrLayout.setOnRefreshListener(listener);
     }
 
+    /**
+     * Set the colors for the SwipeRefreshLayout states
+     * @param col1
+     * @param col2
+     * @param col3
+     * @param col4
+     */
+    public void setRefreshingColor(int col1, int col2, int col3, int col4) {
+        mPtrLayout.setColorScheme(col1, col2, col3, col4);
+    }
+
+    /**
+     * Hide the progressbar
+     */
     public void hideProgress() {
         mProgress.setVisibility(View.GONE);
     }
 
+    /**
+     * Hide the listview
+     */
     public void hideList() {
         mList.setVisibility(View.GONE);
     }
 
+    /**
+     * Set the scroll listener for the listview
+     * @param listener
+     */
     public void setOnScrollListener(AbsListView.OnScrollListener listener) {
         mList.setOnScrollListener(listener);
     }
 
-//    public void setEmptyView(View emptyView) {
-//        mEmpty = emptyView;
-//    }
-
+    /**
+     * Set the onItemClickListener for the listview
+     * @param listener
+     */
     public void setOnItemClickListener(AdapterView.OnItemClickListener listener) {
         mList.setOnItemClickListener(listener);
     }
 
+    /**
+     *
+     * @return the listview adapter
+     */
     public android.widget.ListAdapter getAdapter() {
         return mList.getAdapter();
     }
 
-    public int getFirstVisiblePosition() {
+    private int getFirstVisiblePosition() {
         return mList.getFirstVisiblePosition();
     }
 
@@ -201,6 +246,11 @@ public class SuperListview extends FrameLayout implements AbsListView.OnScrollLi
 
     }
 
+    /**
+     * Sets the More listener
+     * @param onMoreListener
+     * @param max Number of items before loading more
+     */
     public void setupMoreListener(OnMoreListener onMoreListener, int max) {
         mOnMoreListener = onMoreListener;
         ITEM_LEFT_TO_LOAD_MORE = max;
@@ -218,6 +268,10 @@ public class SuperListview extends FrameLayout implements AbsListView.OnScrollLi
         return isLoadingMore;
     }
 
+    /**
+     * Enable/Disable the More event
+     * @param isLoadingMore
+     */
     public void setLoadingMore(boolean isLoadingMore) {
         this.isLoadingMore = isLoadingMore;
     }
@@ -232,6 +286,9 @@ public class SuperListview extends FrameLayout implements AbsListView.OnScrollLi
         }
     }
 
+    /**
+     * Remove the moreListener
+     */
     public void removeMoreListener() {
         mOnMoreListener = null;
     }
