@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="superlistview">
+        <attr name="superlv__selector" format="reference"/>
+        <attr name="superlv__empty" format="reference"/>
+        <attr name="superlv__divider" format="reference"/>
+        <attr name="superlv__dividerHeight" format="dimension"/>
+        <attr name="superlv__clipToPadding" format="boolean"/>
+        <attr name="superlv__Padding" format="dimension"/>
+        <attr name="superlv__PaddingTop" format="dimension"/>
+        <attr name="superlv__PaddingBottom" format="dimension"/>
+        <attr name="superlv__PaddingLeft" format="dimension"/>
+        <attr name="superlv__PaddingRight" format="dimension"/>
+        <attr name="superlv__scrollbarStyle">
+            <flag name="insideOverlay" value="0x0"/>
+            <flag name="insideInset" value="0x01000000"/>
+            <flag name="outsideOverlay" value="0x02000000"/>
+            <flag name="outsideInset" value="0x03000000"/>
+        </attr>
+    </declare-styleable>
+
+</resources>
