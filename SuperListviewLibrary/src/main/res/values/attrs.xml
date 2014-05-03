@@ -20,4 +20,8 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="supergridview">
+        <attr name="supergv__columns" format="integer"></attr>
+    </declare-styleable>
+
 </resources>
