@@ -45,7 +45,7 @@ Just add it to you dependencies
 
 ##License
 
-    Copyright (c) 2013 Etsy
+    Copyright (c) 2014 Quentin Dommerc
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -58,6 +58,7 @@ Just add it to you dependencies
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+    Come on, don't tell me you read that.
 
 [![Analytics](https://ga-beacon.appspot.com/UA-40136896-2/SuperListview/readme)](https://github.com/igrigorik/ga-beacon)
 [sample java]:https://github.com/dommerq/SuperListview/blob/master/Sample/src/main/java/com/quentindommerc/superlistview/sample/MainActivity.java
