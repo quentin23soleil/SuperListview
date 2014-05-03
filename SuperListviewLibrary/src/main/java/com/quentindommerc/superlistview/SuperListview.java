@@ -104,9 +104,11 @@ public class SuperListview extends FrameLayout implements AbsListView.OnScrollLi
 
         mProgress = (ProgressBar) v.findViewById(android.R.id.progress);
         mList = (ListView)v.findViewById(android.R.id.list);
+
         mEmpty = (ViewStub)v.findViewById(R.id.empty);
         mEmpty.setLayoutResource(mEmptyId);
-        mEmpty.inflate();
+        if (mEmptyId != 0)
+            mEmpty.inflate();
         mEmpty.setVisibility(View.GONE);
 
         mList.setClipToPadding(mClipToPadding);
@@ -135,7 +137,8 @@ public class SuperListview extends FrameLayout implements AbsListView.OnScrollLi
     public void setAdapter(BaseAdapter adapter) {
         mList.setAdapter(adapter);
         mProgress.setVisibility(View.GONE);
-        mList.setEmptyView(mEmpty);
+        if (mEmpty != null && mEmptyId != 0)
+            mList.setEmptyView(mEmpty);
         mList.setVisibility(View.VISIBLE);
         mPtrLayout.setRefreshing(false);
         adapter.registerDataSetObserver( new DataSetObserver() {
@@ -144,14 +147,14 @@ public class SuperListview extends FrameLayout implements AbsListView.OnScrollLi
                 super.onChanged();
                 isLoadingMore = false;
                 mPtrLayout.setRefreshing(false);
-                if (mList.getAdapter().getCount() == 0) {
+                if (mList.getAdapter().getCount() == 0 && mEmptyId != 0) {
                     mEmpty.setVisibility(View.VISIBLE);
-                } else {
+                } else if (mEmptyId != 0){
                     mEmpty.setVisibility(View.GONE);
                 }
             }
         });
-        if (adapter == null || adapter.getCount() == 0) {
+        if ((adapter == null || adapter.getCount() == 0) && mEmptyId != 0) {
             mEmpty.setVisibility(View.VISIBLE);
         }
     }
