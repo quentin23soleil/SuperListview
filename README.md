@@ -33,13 +33,33 @@ Just add it to you dependencies
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            superlistview:clipToPadding="false"
-            superlistview:divider="@android:color/transparent"
-            superlistview:dividerHeight="10dp"
-            superlistview:listViewPadding="10dp"
-            superlistview:empty="@layout/emptyview"
-            superlistview:scrollbarStyle="outsideOverlay" >
+            superlistview:superlv__clipToPadding="false"
+            superlistview:superlv__divider="@android:color/transparent"
+            superlistview:superlv__dividerHeight="10dp"
+            superlistview:superlv__Padding="10dp"
+            superlistview:superlv__empty="@layout/emptyview"
+            superlistview:superlv__scrollbarStyle="outsideOverlay" >
     </com.quentindommerc.superlistview.SuperListview>
+```
+
+-   Current Attributes supported:
+```
+        <attr name="superlv__selector" format="reference"/>
+        <attr name="superlv__empty" format="reference"/>
+        <attr name="superlv__divider" format="reference"/>
+        <attr name="superlv__dividerHeight" format="dimension"/>
+        <attr name="superlv__clipToPadding" format="boolean"/>
+        <attr name="superlv__Padding" format="dimension"/>
+        <attr name="superlv__PaddingTop" format="dimension"/>
+        <attr name="superlv__PaddingBottom" format="dimension"/>
+        <attr name="superlv__PaddingLeft" format="dimension"/>
+        <attr name="superlv__PaddingRight" format="dimension"/>
+        <attr name="superlv__scrollbarStyle">
+            <flag name="insideOverlay" value="0x0"/>
+            <flag name="insideInset" value="0x01000000"/>
+            <flag name="outsideOverlay" value="0x02000000"/>
+            <flag name="outsideInset" value="0x03000000"/>
+        </attr>
 ```
 ####[Sample java][sample java]
 
