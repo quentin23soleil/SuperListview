@@ -19,10 +19,19 @@ Features built in:
 
 Just add it to you dependencies
 
+For release version:
 ```
     compile 'com.quentindommerc.superlistview:library:0.1'
-
 ```
+
+For snapshot version:
+```
+    https://oss.sonatype.org/content/repositories/snapshots/
+```
+```
+    compile 'com.quentindommerc.superlistview:library:0.3-SNAPSHOT'
+```
+
 ##Usage
 
 -	Use directly SuperListview:
