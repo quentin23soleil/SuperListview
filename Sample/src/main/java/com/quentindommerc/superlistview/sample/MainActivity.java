@@ -1,19 +1,23 @@
 package com.quentindommerc.superlistview.sample;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.quentindommerc.superlistview.OnMoreListener;
+import com.quentindommerc.superlistview.SuperGridview;
 import com.quentindommerc.superlistview.SuperListview;
 
 import java.util.ArrayList;
 
 
-public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefreshListener, OnMoreListener {
+public class MainActivity extends Activity {
 
     private SuperListview mList;
     private ArrayAdapter<String> mAdapter;
@@ -23,48 +27,25 @@ public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefre
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Empty list view demo, just pull to add more items
         ArrayList<String> lst = new ArrayList<String>();
+        lst.add("List example");
+        lst.add("Grid example");
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, lst);
-
-
-        // This is what you're looking for
         mList = (SuperListview)findViewById(R.id.list);
         mList.setAdapter(mAdapter);
-
-        // Setting the refresh listener will enable the refresh progressbar
-        mList.setRefreshListener(this);
-
-        // Wow so beautiful
-        mList.setRefreshingColor(android.R.color.holo_orange_light, android.R.color.holo_blue_light, android.R.color.holo_green_light, android.R.color.holo_red_light);
-
-        // I want to get loadMore triggered if I see the last item (1)
-        mList.setupMoreListener(this, 1);
-    }
-
-    @Override
-    public void onRefresh() {
-        Toast.makeText(this, "Refresh", Toast.LENGTH_LONG).show();
-
-        // enjoy the beaty of the progressbar
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-
-                // demo purpose, adding to the top so you can see it
-                mAdapter.insert("New stuff", 0);
-
+        mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent();
+                switch (position) {
+                    case 0:
+                        i.setClass(MainActivity.this, ListSample.class);
+                        break;
+                    case 1:
+                        i.setClass(MainActivity.this, GridSample.class);
+                }
+                startActivity(i);
             }
-        }, 2000);
-
-
-    }
-
-    @Override
-    public void loadMore() {
-        Toast.makeText(this, "More", Toast.LENGTH_LONG).show();
-
-        //demo purpose, adding to the bottom
-        mAdapter.add("More asked, more served");
+        });
     }
 }

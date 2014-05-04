@@ -21,7 +21,9 @@
     </declare-styleable>
 
     <declare-styleable name="supergridview">
-        <attr name="supergv__columns" format="integer"></attr>
+        <attr name="supergv__columns" format="integer"/>
+        <attr name="supergv__verticalSpacing" format="dimension"/>
+        <attr name="supergv__horizontalSpacing" format="dimension"/>
     </declare-styleable>
 
 </resources>

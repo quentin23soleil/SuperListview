@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.quentindommerc.superlistview.sample.GridSample"
+            android:label="@string/title_activity_grid_sample" >
+        </activity>
+        <activity
+            android:name="com.quentindommerc.superlistview.sample.ListSample"
+            android:label="@string/title_activity_list_sample" >
+        </activity>
     </application>
 
 </manifest>

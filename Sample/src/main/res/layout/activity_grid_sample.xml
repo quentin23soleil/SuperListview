@@ -1,0 +1,20 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <com.quentindommerc.superlistview.SuperGridview
+            xmlns:superlistview="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            superlistview:superlv__clipToPadding="false"
+            superlistview:superlv__divider="@android:color/transparent"
+            superlistview:superlv__dividerHeight="10dp"
+            superlistview:superlv__Padding="10dp"
+            superlistview:superlv__empty="@layout/emptyview"
+            superlistview:supergv__columns="2"
+            superlistview:supergv__verticalSpacing="10dp"
+            superlistview:supergv__horizontalSpacing="10dp"
+            superlistview:superlv__scrollbarStyle="outsideOverlay" >
+    </com.quentindommerc.superlistview.SuperGridview>
+</RelativeLayout>

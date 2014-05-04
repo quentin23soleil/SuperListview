@@ -50,6 +50,8 @@ public class SuperGridview extends FrameLayout implements AbsListView.OnScrollLi
     private boolean isLoadingMore;
     private int mSelector;
     private SwipeRefreshLayout mPtrLayout;
+    private int mHorizontalSpacing;
+    private int mVerticalSpacing;
 
 
     public SwipeRefreshLayout getSwipeToRefresh() {
@@ -98,6 +100,8 @@ public class SuperGridview extends FrameLayout implements AbsListView.OnScrollLi
         TypedArray ag = getContext().obtainStyledAttributes(attrs, R.styleable.supergridview);
         try {
             mColumns = a.getInt(R.styleable.supergridview_supergv__columns, 1);
+            mVerticalSpacing = (int) a.getDimension(R.styleable.supergridview_supergv__verticalSpacing, 1);
+            mHorizontalSpacing = (int) a.getDimension(R.styleable.supergridview_supergv__horizontalSpacing, 1);
         } finally {
             ag.recycle();
         }
@@ -114,6 +118,8 @@ public class SuperGridview extends FrameLayout implements AbsListView.OnScrollLi
         mProgress = (ProgressBar) v.findViewById(android.R.id.progress);
         mGrid = (GridView)v.findViewById(android.R.id.list);
         mGrid.setNumColumns(mColumns);
+        mGrid.setVerticalSpacing(mVerticalSpacing);
+        mGrid.setHorizontalSpacing(mHorizontalSpacing);
 
         mEmpty = (ViewStub)v.findViewById(R.id.empty);
         mEmpty.setLayoutResource(mEmptyId);
