@@ -295,4 +295,9 @@ public class SuperListview extends FrameLayout implements AbsListView.OnScrollLi
     public void removeMoreListener() {
         mOnMoreListener = null;
     }
+
+
+    public void setOnTouchListener(OnTouchListener listener) {
+        mList.setOnTouchListener(listener);
+    }
 }
