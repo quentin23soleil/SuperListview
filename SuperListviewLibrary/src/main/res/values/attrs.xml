@@ -18,6 +18,10 @@
             <flag name="outsideOverlay" value="0x02000000"/>
             <flag name="outsideInset" value="0x03000000"/>
         </attr>
+
+        <!-- Layout to build a superList. Default values are  @layout/view_progress_listview for a list and
+         @layout/view_progress_gridview for a grid-->
+        <attr name="superlv_mainLayoutID" format="reference"/>
     </declare-styleable>
 
     <declare-styleable name="supergridview">
