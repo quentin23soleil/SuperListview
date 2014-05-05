@@ -64,11 +64,10 @@ public class SuperGridview extends BaseSuperAbsListview {
     protected void initAbsListView(View v) {
 
         View listView = v.findViewById(android.R.id.list);
-
         if (listView instanceof GridView)
             mList = (GridView) listView;
         else
-            throw new IllegalArgumentException("SuperListView works with a Grid!");
+            throw new IllegalArgumentException(listView.getClass().getName());
 
         if (mList!=null) {
 

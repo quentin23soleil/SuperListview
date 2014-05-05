@@ -17,16 +17,16 @@
     </android.support.v4.widget.SwipeRefreshLayout>
     <ProgressBar
             android:id="@android:id/progress"
-            style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
+            style="?android:attr/progressBarStyleLarge"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:indeterminate="false"/>
 
     <ViewStub android:id="@+id/empty"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center"
-          android:visibility="gone" />
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:visibility="gone" />
 
 </FrameLayout>
