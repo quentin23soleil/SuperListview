@@ -34,7 +34,6 @@ For snapshot version:
 ```
     compile 'com.quentindommerc.superlistview:library:0.7-SNAPSHOT'
 ```
-
 ##Usage
 
 -	Use directly SuperListview:
