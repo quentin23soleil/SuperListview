@@ -15,6 +15,9 @@ Features built in:
 - Open to suggestions (and Pull Request ofc) for others :)
 - Infinite scrolling, when you reach the X last item, load more of them.
 
+####[Sample apk][apk]
+
+
 ##Integration
 
 Just add it to you dependencies
@@ -52,7 +55,7 @@ For snapshot version:
 ```
 
 -   Current Attributes supported:
-```
+```xml
         <attr name="superlv__selector" format="reference"/>
         <attr name="superlv__empty" format="reference"/>
         <attr name="superlv__divider" format="reference"/>
@@ -72,7 +75,7 @@ For snapshot version:
 ```
 
 ### For Gridview
-```
+```xml
     <com.quentindommerc.superlistview.SuperGridview
             xmlns:superlistview="http://schemas.android.com/apk/res-auto"
             android:id="@+id/list"
@@ -91,7 +94,7 @@ For snapshot version:
 ```
 
 -   Current Attributes supported:
-```
+```xml
         <attr name="superlv__selector" format="reference"/>
         <attr name="superlv__empty" format="reference"/>
         <attr name="superlv__divider" format="reference"/>
@@ -116,7 +119,6 @@ For snapshot version:
 
 
 ####[Sample java][sample java]
-####[Sample apk][apk]
 
 ##License
 
