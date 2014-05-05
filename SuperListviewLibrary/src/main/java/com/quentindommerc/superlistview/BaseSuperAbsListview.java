@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.database.DataSetObserver;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewStub;
@@ -85,7 +86,8 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
             mScrollbarStyle = a.getInt(R.styleable.superlistview_superlv__scrollbarStyle, -1);
             mEmptyId = a.getResourceId(R.styleable.superlistview_superlv__empty, 0);
             mSelector = a.getResourceId(R.styleable.superlistview_superlv__selector, 0);
-        } finally {
+        }
+        finally {
             a.recycle();
         }
     }

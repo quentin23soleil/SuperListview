@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
@@ -35,6 +36,7 @@ public class SuperListview extends BaseSuperAbsListview {
 
     @Override
     protected void initAttrs(AttributeSet attrs) {
+        super.initAttrs(attrs);
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.superlistview);
         try {
             mSuperListViewMainLayout = a.getResourceId(R.styleable.superlistview_superlv_mainLayoutID, R.layout.view_progress_listview);
@@ -67,6 +69,7 @@ public class SuperListview extends BaseSuperAbsListview {
                 mList.setSelector(mSelector);
 
             if (mPadding != -1.0f) {
+                Log.e("TOTO", String.format("Padding %d", mPadding));
                 mList.setPadding(mPadding, mPadding, mPadding, mPadding);
             } else {
                 mList.setPadding(mPaddingLeft, mPaddingTop, mPaddingRight, mPaddingBottom);
