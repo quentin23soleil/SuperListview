@@ -138,5 +138,5 @@ For snapshot version:
     Come on, don't tell me you read that.
 
 [![Analytics](https://ga-beacon.appspot.com/UA-40136896-2/SuperListview/readme)](https://github.com/igrigorik/ga-beacon)
-[sample java]:https://github.com/dommerq/SuperListview/blob/master/Sample/src/main/java/com/quentindommerc/superlistview/sample/ListSample.java
+[sample java]:https://github.com/dommerq/SuperListview/blob/dev/Sample/src/main/java/com/quentindommerc/superlistview/sample/ListSample.java
 [apk]:https://github.com/dommerq/SuperListview/blob/dev/sample.apk
