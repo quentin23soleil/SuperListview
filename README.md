@@ -139,4 +139,4 @@ For snapshot version:
 
 [![Analytics](https://ga-beacon.appspot.com/UA-40136896-2/SuperListview/readme)](https://github.com/igrigorik/ga-beacon)
 [sample java]:https://github.com/dommerq/SuperListview/blob/master/Sample/src/main/java/com/quentindommerc/superlistview/sample/ListSample.java
-[apk]:https://github.com/dommerq/SuperListview/sample.apk
+[apk]:https://github.com/dommerq/SuperListview/blob/dev/sample.apk
