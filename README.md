@@ -119,6 +119,13 @@ For snapshot version:
 
 ####[Sample java][sample java]
 
+## Contributors
+
+Arasthel [Github](https://github.com/Arasthel)
+
+Gabriele Mariotti [Github](https://github.com/gabrielemariotti), [Google+](https://plus.google.com/+GabrieleMariotti/posts)
+
+
 ##License
 
     Copyright (c) 2014 Quentin Dommerc
