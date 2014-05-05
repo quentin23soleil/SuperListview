@@ -32,7 +32,7 @@ For snapshot version:
     https://oss.sonatype.org/content/repositories/snapshots/
 ```
 ```
-    compile 'com.quentindommerc.superlistview:library:0.7-SNAPSHOT'
+    compile 'com.quentindommerc.superlistview:library:0.8-SNAPSHOT'
 ```
 ##Usage
 
