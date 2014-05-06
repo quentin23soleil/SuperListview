@@ -24,7 +24,7 @@ Just add it to you dependencies
 
 For release version:
 ```
-    compile 'com.quentindommerc.superlistview:library:0.1'
+    compile 'com.quentindommerc.superlistview:library:0.3'
 ```
 
 For snapshot version:
@@ -32,7 +32,7 @@ For snapshot version:
     https://oss.sonatype.org/content/repositories/snapshots/
 ```
 ```
-    compile 'com.quentindommerc.superlistview:library:0.8-SNAPSHOT'
+    compile 'com.quentindommerc.superlistview:library:0.8.3-SNAPSHOT'
 ```
 ##Usage
 
