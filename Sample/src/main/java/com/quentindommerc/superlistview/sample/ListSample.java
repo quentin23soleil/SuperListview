@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.quentindommerc.superlistview.OnMoreListener;
 import com.quentindommerc.superlistview.SuperGridview;
 import com.quentindommerc.superlistview.SuperListview;
+import com.quentindommerc.superlistview.SwipeDismissListViewTouchListener;
 
 import java.util.ArrayList;
 
@@ -41,6 +43,25 @@ public class ListSample extends Activity implements SwipeRefreshLayout.OnRefresh
 
         // I want to get loadMore triggered if I see the last item (1)
         mList.setupMoreListener(this, 1);
+
+        mList.setupMoreListener(new OnMoreListener() {
+            @Override
+            public void onMoreAsked(int numberOfItems, int numberBeforeMore, int currentItemPos) {
+
+            }
+        }, 10);
+
+
+        mList.setupSwipeToDismiss(new SwipeDismissListViewTouchListener.DismissCallbacks() {
+            @Override
+            public boolean canDismiss(int position) {
+                return true;
+            }
+
+            @Override
+            public void onDismiss(ListView listView, int[] reverseSortedPositions) {
+            }
+        }, true);
     }
 
     @Override
@@ -62,7 +83,8 @@ public class ListSample extends Activity implements SwipeRefreshLayout.OnRefresh
     }
 
     @Override
-    public void loadMore() {
+    public void onMoreAsked(int numberOfItems, int numberBeforeMore, int currentItemPos) {
+
         Toast.makeText(this, "More", Toast.LENGTH_LONG).show();
 
         //demo purpose, adding to the bottom

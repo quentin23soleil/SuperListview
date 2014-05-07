@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewStub;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
@@ -75,17 +76,17 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
     protected void initAttrs(AttributeSet attrs) {
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.superlistview);
         try {
-            mClipToPadding = a.getBoolean(R.styleable.superlistview_superlv__clipToPadding, false);
-            mDivider = a.getInt(R.styleable.superlistview_superlv__divider, 0);
-            mDividerHeight = a.getDimension(R.styleable.superlistview_superlv__dividerHeight, 0.0f);
-            mPadding = (int)a.getDimension(R.styleable.superlistview_superlv__Padding, -1.0f);
-            mPaddingTop = (int)a.getDimension(R.styleable.superlistview_superlv__PaddingTop, 0.0f);
-            mPaddingBottom = (int)a.getDimension(R.styleable.superlistview_superlv__PaddingBottom, 0.0f);
-            mPaddingLeft = (int)a.getDimension(R.styleable.superlistview_superlv__PaddingLeft, 0.0f);
-            mPaddingRight = (int)a.getDimension(R.styleable.superlistview_superlv__PaddingRight, 0.0f);
+            mClipToPadding = a.getBoolean(R.styleable.superlistview_superlv__listClipToPadding, false);
+            mDivider = a.getInt(R.styleable.superlistview_superlv__listDivider, 0);
+            mDividerHeight = a.getDimension(R.styleable.superlistview_superlv__listDividerHeight, 0.0f);
+            mPadding = (int)a.getDimension(R.styleable.superlistview_superlv__listPadding, -1.0f);
+            mPaddingTop = (int)a.getDimension(R.styleable.superlistview_superlv__listPaddingTop, 0.0f);
+            mPaddingBottom = (int)a.getDimension(R.styleable.superlistview_superlv__listPaddingBottom, 0.0f);
+            mPaddingLeft = (int)a.getDimension(R.styleable.superlistview_superlv__listPaddingLeft, 0.0f);
+            mPaddingRight = (int)a.getDimension(R.styleable.superlistview_superlv__listPaddingRight, 0.0f);
             mScrollbarStyle = a.getInt(R.styleable.superlistview_superlv__scrollbarStyle, -1);
             mEmptyId = a.getResourceId(R.styleable.superlistview_superlv__empty, 0);
-            mSelector = a.getResourceId(R.styleable.superlistview_superlv__selector, 0);
+            mSelector = a.getResourceId(R.styleable.superlistview_superlv__listSelector, 0);
         }
         finally {
             a.recycle();
@@ -124,7 +125,7 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
      * If adapter is empty, then the emptyview is shown
      * @param adapter
      */
-    public void setAdapter(BaseAdapter adapter) {
+    public void setAdapter(ArrayAdapter adapter) {
         mList.setAdapter(adapter);
         mProgress.setVisibility(View.GONE);
         if (mEmpty != null && mEmptyId != 0)
@@ -275,7 +276,7 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
         if (((totalItemCount - firstVisibleItem - visibleItemCount) == ITEM_LEFT_TO_LOAD_MORE || (totalItemCount - firstVisibleItem - visibleItemCount) == 0 && totalItemCount > visibleItemCount) && !isLoadingMore) {
             isLoadingMore = true;
             if (mOnMoreListener != null)
-                mOnMoreListener.loadMore();
+                mOnMoreListener.onMoreAsked(mList.getAdapter().getCount(), ITEM_LEFT_TO_LOAD_MORE, firstVisibleItem);
         }
     }
 

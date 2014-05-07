@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.quentindommerc.superlistview.superlistview.R;
@@ -69,7 +70,6 @@ public class SuperListview extends BaseSuperAbsListview {
                 mList.setSelector(mSelector);
 
             if (mPadding != -1.0f) {
-                Log.e("TOTO", String.format("Padding %d", mPadding));
                 mList.setPadding(mPadding, mPadding, mPadding, mPadding);
             } else {
                 mList.setPadding(mPaddingLeft, mPaddingTop, mPaddingRight, mPaddingBottom);
@@ -79,5 +79,28 @@ public class SuperListview extends BaseSuperAbsListview {
         }
     }
 
+
+    public void setupSwipeToDismiss(final SwipeDismissListViewTouchListener.DismissCallbacks listener, final boolean autoRemove) {
+        SwipeDismissListViewTouchListener touchListener =
+                new SwipeDismissListViewTouchListener((ListView) mList, new SwipeDismissListViewTouchListener.DismissCallbacks() {
+                    @Override
+                    public boolean canDismiss(int position) {
+                        return listener.canDismiss(position);
+                    }
+
+                    @Override
+                    public void onDismiss(ListView listView, int[] reverseSortedPositions) {
+                        if (autoRemove) {
+                            for (int position : reverseSortedPositions) {
+
+                                ((ArrayAdapter)mList.getAdapter()).remove(mList.getAdapter().getItem(position));
+                            }
+                            ((ArrayAdapter)mList.getAdapter()).notifyDataSetChanged();
+                        }
+                        listener.onDismiss(listView, reverseSortedPositions);
+                    }
+                });
+        mList.setOnTouchListener(touchListener);
+    }
 
 }

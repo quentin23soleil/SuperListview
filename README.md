@@ -12,10 +12,12 @@ Features built in:
 - ProgressBar while adapter hasn't been set
 - EmptyView if adapter is empty
 - SwipeRefreshLayout (Google's one)
-- Open to suggestions (and Pull Request ofc) for others :)
 - Infinite scrolling, when you reach the X last item, load more of them.
+- Swipe To Dismiss for the SuperListView (doesn't make sense for a gridview) (Thanks [Roman Nurik][roman-swipe-to-dismiss])
+- GridView with SuperGridView
+- Open to suggestions (and Pull Request ofc) for others :)
 
-####[Sample apk][apk]
+####[Sample apk][apk] (pull to add item to the adapter)
 
 
 ##Integration
@@ -24,7 +26,7 @@ Just add it to you dependencies
 
 For release version:
 ```
-    compile 'com.quentindommerc.superlistview:library:0.1'
+    compile 'com.quentindommerc.superlistview:library:1.0'
 ```
 
 For snapshot version:
@@ -32,7 +34,7 @@ For snapshot version:
     https://oss.sonatype.org/content/repositories/snapshots/
 ```
 ```
-    compile 'com.quentindommerc.superlistview:library:0.8-SNAPSHOT'
+    compile 'com.quentindommerc.superlistview:library:1.0-SNAPSHOT'
 ```
 ##Usage
 
@@ -44,10 +46,10 @@ For snapshot version:
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            superlistview:superlv__clipToPadding="false"
-            superlistview:superlv__divider="@android:color/transparent"
-            superlistview:superlv__dividerHeight="10dp"
-            superlistview:superlv__Padding="10dp"
+            superlistview:superlv__listClipToPadding="false"
+            superlistview:superlv__listDivider="@android:color/transparent"
+            superlistview:superlv__listDividerHeight="10dp"
+            superlistview:superlv__listPadding="10dp"
             superlistview:superlv__empty="@layout/emptyview"
             superlistview:superlv__scrollbarStyle="outsideOverlay" >
     </com.quentindommerc.superlistview.SuperListview>
@@ -55,16 +57,16 @@ For snapshot version:
 
 -   Current Attributes supported:
 ```xml
-        <attr name="superlv__selector" format="reference"/>
+        <attr name="superlv__listSelector" format="reference"/>
         <attr name="superlv__empty" format="reference"/>
-        <attr name="superlv__divider" format="reference"/>
-        <attr name="superlv__dividerHeight" format="dimension"/>
-        <attr name="superlv__clipToPadding" format="boolean"/>
-        <attr name="superlv__Padding" format="dimension"/>
-        <attr name="superlv__PaddingTop" format="dimension"/>
-        <attr name="superlv__PaddingBottom" format="dimension"/>
-        <attr name="superlv__PaddingLeft" format="dimension"/>
-        <attr name="superlv__PaddingRight" format="dimension"/>
+        <attr name="superlv__listDivider" format="reference"/>
+        <attr name="superlv__listDividerHeight" format="dimension"/>
+        <attr name="superlv__listClipToPadding" format="boolean"/>
+        <attr name="superlv__listPadding" format="dimension"/>
+        <attr name="superlv__listPaddingTop" format="dimension"/>
+        <attr name="superlv__listPaddingBottom" format="dimension"/>
+        <attr name="superlv__listPaddingLeft" format="dimension"/>
+        <attr name="superlv__listPaddingRight" format="dimension"/>
         <attr name="superlv__scrollbarStyle">
             <flag name="insideOverlay" value="0x0"/>
             <flag name="insideInset" value="0x01000000"/>
@@ -80,10 +82,10 @@ For snapshot version:
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            superlistview:superlv__clipToPadding="false"
-            superlistview:superlv__divider="@android:color/transparent"
-            superlistview:superlv__dividerHeight="10dp"
-            superlistview:superlv__Padding="10dp"
+            superlistview:superlv__listClipToPadding="false"
+            superlistview:superlv__listDivider="@android:color/transparent"
+            superlistview:superlv__listDividerHeight="10dp"
+            superlistview:superlv__listPadding="10dp"
             superlistview:superlv__empty="@layout/emptyview"
             superlistview:supergv__columns="2"
             superlistview:supergv__verticalSpacing="10dp"
@@ -94,16 +96,16 @@ For snapshot version:
 
 -   Current Attributes supported:
 ```xml
-        <attr name="superlv__selector" format="reference"/>
+        <attr name="superlv__listSelector" format="reference"/>
         <attr name="superlv__empty" format="reference"/>
-        <attr name="superlv__divider" format="reference"/>
-        <attr name="superlv__dividerHeight" format="dimension"/>
-        <attr name="superlv__clipToPadding" format="boolean"/>
-        <attr name="superlv__Padding" format="dimension"/>
-        <attr name="superlv__PaddingTop" format="dimension"/>
-        <attr name="superlv__PaddingBottom" format="dimension"/>
-        <attr name="superlv__PaddingLeft" format="dimension"/>
-        <attr name="superlv__PaddingRight" format="dimension"/>
+        <attr name="superlv__listDivider" format="reference"/>
+        <attr name="superlv__listDividerHeight" format="dimension"/>
+        <attr name="superlv__listClipToPadding" format="boolean"/>
+        <attr name="superlv__listPadding" format="dimension"/>
+        <attr name="superlv__listPaddingTop" format="dimension"/>
+        <attr name="superlv__listPaddingBottom" format="dimension"/>
+        <attr name="superlv__listPaddingLeft" format="dimension"/>
+        <attr name="superlv__listPaddingRight" format="dimension"/>
         <attr name="superlv__scrollbarStyle">
             <flag name="insideOverlay" value="0x0"/>
             <flag name="insideInset" value="0x01000000"/>
@@ -115,6 +117,38 @@ For snapshot version:
         <attr name="supergv__verticalSpacing" format="dimension">
 ```
 
+
+##SuperListView Java Usage
+
+```java
+    list.setRefreshListener(new SwipeRefreshLayout.OnRefreshListener {
+      @Override
+      public void onRefresh() {
+          // Do your refresh
+      });
+
+    // when there is only 10 items to see in the list, this is triggered
+    list.setupMoreListener(new OnMoreListener() {
+      @Override
+      public void onMoreAsked(int numberOfItems, int numberBeforeMore, int currentItemPos) {
+        // Fetch more from Api or DB
+      }}, 10);
+
+
+    // the 2nd parameters is true if you want SuperListView to automatically
+    // delete the item from the listview or false if you don't
+    list.setupSwipeToDismiss(new SwipeDismissListViewTouchListener.DismissCallbacks() {
+      @Override
+      public boolean canDismiss(int position) {
+        return true
+      }
+
+      @Override
+      public void onDismiss(ListView listView, int[] reverseSortedPositions) {
+        // Do your stuff like call an Api or update your db
+      }}, true);
+
+```
 
 
 ####[Sample java][sample java]
@@ -146,3 +180,4 @@ Gabriele Mariotti [Github](https://github.com/gabrielemariotti), [Google+](https
 [![Analytics](https://ga-beacon.appspot.com/UA-40136896-2/SuperListview/readme)](https://github.com/igrigorik/ga-beacon)
 [sample java]:https://github.com/dommerq/SuperListview/blob/dev/Sample/src/main/java/com/quentindommerc/superlistview/sample/ListSample.java
 [apk]:https://github.com/dommerq/SuperListview/blob/dev/sample.apk
+[roman-swipe-to-dismiss]:https://github.com/romannurik/Android-SwipeToDismiss

@@ -3,6 +3,7 @@ package com.quentindommerc.superlistview.sample;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -14,7 +15,7 @@ import com.quentindommerc.superlistview.SuperListview;
 import java.util.ArrayList;
 
 
-public class GridSample extends Activity implements SwipeRefreshLayout.OnRefreshListener, OnMoreListener {
+public class GridSample extends FragmentActivity implements SwipeRefreshLayout.OnRefreshListener, OnMoreListener {
 
     private SuperGridview mList;
     private ArrayAdapter<String> mAdapter;
@@ -24,13 +25,14 @@ public class GridSample extends Activity implements SwipeRefreshLayout.OnRefresh
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid_sample);
 
+
         // Empty list view demo, just pull to add more items
         ArrayList<String> lst = new ArrayList<String>();
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, lst);
 
 
         // This is what you're looking for
-        mList = (SuperGridview)findViewById(R.id.list);
+        mList = (SuperGridview) findViewById(R.id.list);
         mList.setAdapter(mAdapter);
 
         // Setting the refresh listener will enable the refresh progressbar
@@ -62,10 +64,11 @@ public class GridSample extends Activity implements SwipeRefreshLayout.OnRefresh
     }
 
     @Override
-    public void loadMore() {
+    public void onMoreAsked(int numberOfItems, int numberBeforeMore, int currentItemPos) {
         Toast.makeText(this, "More", Toast.LENGTH_LONG).show();
 
         //demo purpose, adding to the bottom
         mAdapter.add("More asked, more served");
+
     }
 }

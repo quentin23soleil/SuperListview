@@ -2,16 +2,16 @@
 <resources>
 
     <declare-styleable name="superlistview">
-        <attr name="superlv__selector" format="reference"/>
+        <attr name="superlv__listSelector" format="reference"/>
         <attr name="superlv__empty" format="reference"/>
-        <attr name="superlv__divider" format="reference"/>
-        <attr name="superlv__dividerHeight" format="dimension"/>
-        <attr name="superlv__clipToPadding" format="boolean"/>
-        <attr name="superlv__Padding" format="dimension"/>
-        <attr name="superlv__PaddingTop" format="dimension"/>
-        <attr name="superlv__PaddingBottom" format="dimension"/>
-        <attr name="superlv__PaddingLeft" format="dimension"/>
-        <attr name="superlv__PaddingRight" format="dimension"/>
+        <attr name="superlv__listDivider" format="reference"/>
+        <attr name="superlv__listDividerHeight" format="dimension"/>
+        <attr name="superlv__listClipToPadding" format="boolean"/>
+        <attr name="superlv__listPadding" format="dimension"/>
+        <attr name="superlv__listPaddingTop" format="dimension"/>
+        <attr name="superlv__listPaddingBottom" format="dimension"/>
+        <attr name="superlv__listPaddingLeft" format="dimension"/>
+        <attr name="superlv__listPaddingRight" format="dimension"/>
         <attr name="superlv__scrollbarStyle">
             <flag name="insideOverlay" value="0x0"/>
             <flag name="insideInset" value="0x01000000"/>
