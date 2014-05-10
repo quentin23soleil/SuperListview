@@ -189,7 +189,6 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
      * @param col3
      * @param col4
      */
-    @SuppressWarnings("ResourceAsColor")
     public void setRefreshingColor(int col1, int col2, int col3, int col4) {
         mPtrLayout.setColorScheme(col1, col2, col3, col4);
     }
