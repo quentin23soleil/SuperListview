@@ -21,6 +21,7 @@ public class ListSample extends Activity implements SwipeRefreshLayout.OnRefresh
     private SuperListview mList;
     private ArrayAdapter<String> mAdapter;
 
+    @SuppressWarnings("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -62,7 +62,7 @@ public class SuperListview extends BaseSuperAbsListview {
 
             mList.setClipToPadding(mClipToPadding);
 
-            getList().setDivider(new ColorDrawable(getContext().getResources().getColor(android.R.color.transparent)));
+            getList().setDivider(new ColorDrawable(mDivider));
             getList().setDividerHeight((int) mDividerHeight);
 
             mList.setOnScrollListener(this);

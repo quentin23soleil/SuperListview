@@ -77,7 +77,7 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.superlistview);
         try {
             mClipToPadding = a.getBoolean(R.styleable.superlistview_superlv__listClipToPadding, false);
-            mDivider = a.getInt(R.styleable.superlistview_superlv__listDivider, 0);
+            mDivider = a.getColor(R.styleable.superlistview_superlv__listDivider, 0);
             mDividerHeight = a.getDimension(R.styleable.superlistview_superlv__listDividerHeight, 0.0f);
             mPadding = (int)a.getDimension(R.styleable.superlistview_superlv__listPadding, -1.0f);
             mPaddingTop = (int)a.getDimension(R.styleable.superlistview_superlv__listPaddingTop, 0.0f);
@@ -189,6 +189,7 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
      * @param col3
      * @param col4
      */
+    @SuppressWarnings("ResourceAsColor")
     public void setRefreshingColor(int col1, int col2, int col3, int col4) {
         mPtrLayout.setColorScheme(col1, col2, col3, col4);
     }
