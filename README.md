@@ -26,7 +26,7 @@ Just add it to you dependencies
 
 For release version:
 ```
-    compile 'com.quentindommerc.superlistview:library:1.3'
+    compile 'com.quentindommerc.superlistview:library:1.4'
 ```
 
 For snapshot version:
@@ -34,7 +34,7 @@ For snapshot version:
     https://oss.sonatype.org/content/repositories/snapshots/
 ```
 ```
-    compile 'com.quentindommerc.superlistview:library:1.3-SNAPSHOT'
+    compile 'com.quentindommerc.superlistview:library:1.4.1-SNAPSHOT'
 ```
 ##Usage
 
@@ -158,6 +158,8 @@ For snapshot version:
 Arasthel [Github](https://github.com/Arasthel)
 
 Gabriele Mariotti [Github](https://github.com/gabrielemariotti), [Google+](https://plus.google.com/+GabrieleMariotti/posts)
+
+Kochkin Artem [Github](https://github.com/kolipass)
 
 
 ##License
