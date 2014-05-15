@@ -9,12 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewStub;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
-import android.widget.ProgressBar;
+import android.widget.*;
 
 import com.quentindommerc.superlistview.superlistview.R;
 
@@ -125,7 +120,7 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
      * If adapter is empty, then the emptyview is shown
      * @param adapter
      */
-    public void setAdapter(ArrayAdapter adapter) {
+    public void setAdapter(ListAdapter adapter) {
         mList.setAdapter(adapter);
         mProgress.setVisibility(View.GONE);
         if (mEmpty != null && mEmptyId != 0)
