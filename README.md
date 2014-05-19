@@ -26,7 +26,7 @@ Just add it to you dependencies
 
 For release version:
 ```
-    compile 'com.quentindommerc.superlistview:library:1.4'
+    compile 'com.quentindommerc.superlistview:library:1.5'
 ```
 
 For snapshot version:
@@ -34,7 +34,7 @@ For snapshot version:
     https://oss.sonatype.org/content/repositories/snapshots/
 ```
 ```
-    compile 'com.quentindommerc.superlistview:library:1.4.1-SNAPSHOT'
+    compile 'com.quentindommerc.superlistview:library:1.5.1-SNAPSHOT'
 ```
 ##Usage
 
@@ -53,26 +53,6 @@ For snapshot version:
             superlistview:superlv__empty="@layout/emptyview"
             superlistview:superlv__scrollbarStyle="outsideOverlay" >
     </com.quentindommerc.superlistview.SuperListview>
-```
-
--   Current Attributes supported:
-```xml
-        <attr name="superlv__listSelector" format="reference"/>
-        <attr name="superlv__empty" format="reference"/>
-        <attr name="superlv__listDivider" format="reference"/>
-        <attr name="superlv__listDividerHeight" format="dimension"/>
-        <attr name="superlv__listClipToPadding" format="boolean"/>
-        <attr name="superlv__listPadding" format="dimension"/>
-        <attr name="superlv__listPaddingTop" format="dimension"/>
-        <attr name="superlv__listPaddingBottom" format="dimension"/>
-        <attr name="superlv__listPaddingLeft" format="dimension"/>
-        <attr name="superlv__listPaddingRight" format="dimension"/>
-        <attr name="superlv__scrollbarStyle">
-            <flag name="insideOverlay" value="0x0"/>
-            <flag name="insideInset" value="0x01000000"/>
-            <flag name="outsideOverlay" value="0x02000000"/>
-            <flag name="outsideInset" value="0x03000000"/>
-        </attr>
 ```
 
 ### For Gridview
@@ -96,27 +76,30 @@ For snapshot version:
 
 -   Current Attributes supported:
 ```xml
-        <attr name="superlv__listSelector" format="reference"/>
-        <attr name="superlv__empty" format="reference"/>
-        <attr name="superlv__listDivider" format="reference"/>
-        <attr name="superlv__listDividerHeight" format="dimension"/>
-        <attr name="superlv__listClipToPadding" format="boolean"/>
-        <attr name="superlv__listPadding" format="dimension"/>
-        <attr name="superlv__listPaddingTop" format="dimension"/>
-        <attr name="superlv__listPaddingBottom" format="dimension"/>
-        <attr name="superlv__listPaddingLeft" format="dimension"/>
-        <attr name="superlv__listPaddingRight" format="dimension"/>
-        <attr name="superlv__scrollbarStyle">
-            <flag name="insideOverlay" value="0x0"/>
-            <flag name="insideInset" value="0x01000000"/>
-            <flag name="outsideOverlay" value="0x02000000"/>
-            <flag name="outsideInset" value="0x03000000"/>
-        </attr>
-        <attr name="supergv__columns" format="integer">
-        <attr name="supergv__horizontalSpacing" format="dimension">
-        <attr name="supergv__verticalSpacing" format="dimension">
+         <attr name="superlv__listSelector" format="reference"/>
+         <attr name="superlv__empty" format="reference"/>
+         <attr name="superlv__moreProgress" format="reference"/>
+         <attr name="superlv__progress" format="reference"/>
+         <attr name="superlv__listDivider" format="reference"/>
+         <attr name="superlv__listDividerHeight" format="dimension"/>
+         <attr name="superlv__listClipToPadding" format="boolean"/>
+         <attr name="superlv__listPadding" format="dimension"/>
+         <attr name="superlv__listPaddingTop" format="dimension"/>
+         <attr name="superlv__listPaddingBottom" format="dimension"/>
+         <attr name="superlv__listPaddingLeft" format="dimension"/>
+         <attr name="superlv__listPaddingRight" format="dimension"/>
+         <attr name="superlv__scrollbarStyle">
+             <flag name="insideOverlay" value="0x0"/>
+             <flag name="insideInset" value="0x01000000"/>
+             <flag name="outsideOverlay" value="0x02000000"/>
+             <flag name="outsideInset" value="0x03000000"/>
+         </attr>
+ 
+         <!-- Layout to build a superList. Default values are  @layout/view_progress_listview for a list and
+          @layout/view_progress_gridview for a grid-->
+         <attr name="superlv_mainLayoutID" format="reference"/>
+ 
 ```
-
 
 ##SuperListView Java Usage
 

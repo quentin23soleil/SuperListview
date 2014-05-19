@@ -34,7 +34,30 @@ public class ListSample extends Activity implements SwipeRefreshLayout.OnRefresh
 
         // This is what you're looking for
         mList = (SuperListview)findViewById(R.id.list);
-        mList.setAdapter(mAdapter);
+
+        Thread thread = new Thread( new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapter.add("More stuff");
+                        mAdapter.add("More stuff");
+                        mAdapter.add("More stuff");
+
+                        mList.setAdapter(mAdapter);
+
+                    }
+                });
+            }
+        });
+        thread.start();
 
         // Setting the refresh listener will enable the refresh progressbar
         mList.setRefreshListener(this);
@@ -44,38 +67,6 @@ public class ListSample extends Activity implements SwipeRefreshLayout.OnRefresh
 
         // I want to get loadMore triggered if I see the last item (1)
         mList.setupMoreListener(this, 1);
-
-        mList.setupMoreListener(new OnMoreListener() {
-            @Override
-            public void onMoreAsked(int numberOfItems, int numberBeforeMore, int currentItemPos) {
-
-                 Thread thread = new Thread( new Runnable() {
-                     @Override
-                     public void run() {
-                         try {
-                             Thread.sleep(2000);
-                         } catch (InterruptedException e) {
-                             e.printStackTrace();
-                         }
-
-                         runOnUiThread(new Runnable() {
-                             @Override
-                             public void run() {
-                                 mAdapter.add("More stuff");
-                                 mAdapter.add("More stuff");
-                                 mAdapter.add("More stuff");
-                                 mList.hideMoreProgress();
-
-                             }
-                         });
-                     }
-                 });
-
-                thread.start();
-
-            }
-        }, 10);
-
 
         mList.setupSwipeToDismiss(new SwipeDismissListViewTouchListener.DismissCallbacks() {
             @Override
