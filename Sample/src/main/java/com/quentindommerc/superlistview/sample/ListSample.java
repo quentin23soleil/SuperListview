@@ -49,6 +49,30 @@ public class ListSample extends Activity implements SwipeRefreshLayout.OnRefresh
             @Override
             public void onMoreAsked(int numberOfItems, int numberBeforeMore, int currentItemPos) {
 
+                 Thread thread = new Thread( new Runnable() {
+                     @Override
+                     public void run() {
+                         try {
+                             Thread.sleep(2000);
+                         } catch (InterruptedException e) {
+                             e.printStackTrace();
+                         }
+
+                         runOnUiThread(new Runnable() {
+                             @Override
+                             public void run() {
+                                 mAdapter.add("More stuff");
+                                 mAdapter.add("More stuff");
+                                 mAdapter.add("More stuff");
+                                 mList.hideMoreProgress();
+
+                             }
+                         });
+                     }
+                 });
+
+                thread.start();
+
             }
         }, 10);
 

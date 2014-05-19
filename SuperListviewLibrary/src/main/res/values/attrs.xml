@@ -4,6 +4,7 @@
     <declare-styleable name="superlistview">
         <attr name="superlv__listSelector" format="reference"/>
         <attr name="superlv__empty" format="reference"/>
+        <attr name="superlv__moreProgress" format="reference"/>
         <attr name="superlv__listDivider" format="reference"/>
         <attr name="superlv__listDividerHeight" format="dimension"/>
         <attr name="superlv__listClipToPadding" format="boolean"/>

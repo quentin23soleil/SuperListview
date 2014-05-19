@@ -11,6 +11,7 @@
             superlistview:superlv__listDivider="@android:color/transparent"
             superlistview:superlv__listDividerHeight="10dp"
             superlistview:superlv__empty="@layout/emptyview"
+            superlistview:superlv__moreProgress="@layout/view_more_progress"
             superlistview:superlv__scrollbarStyle="outsideOverlay" >
     </com.quentindommerc.superlistview.SuperListview>
 </RelativeLayout>

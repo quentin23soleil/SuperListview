@@ -22,6 +22,7 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
     protected int ITEM_LEFT_TO_LOAD_MORE = 10;
 
     protected ProgressBar mProgress;
+    protected ViewStub mMoreProgress;
     protected AbsListView mList;
     protected ViewStub mEmpty;
 
@@ -35,6 +36,8 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
     protected int mPaddingRight;
     protected int mScrollbarStyle;
     protected int mEmptyId;
+    protected int mMoreProgressId;
+
 
     protected OnMoreListener mOnMoreListener;
     protected boolean isLoadingMore;
@@ -81,6 +84,7 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
             mPaddingRight = (int)a.getDimension(R.styleable.superlistview_superlv__listPaddingRight, 0.0f);
             mScrollbarStyle = a.getInt(R.styleable.superlistview_superlv__scrollbarStyle, -1);
             mEmptyId = a.getResourceId(R.styleable.superlistview_superlv__empty, 0);
+            mMoreProgressId = a.getResourceId(R.styleable.superlistview_superlv__moreProgress, R.layout.view_more_progress);
             mSelector = a.getResourceId(R.styleable.superlistview_superlv__listSelector, 0);
         }
         finally {
@@ -97,6 +101,12 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
         mPtrLayout.setEnabled(false);
 
         mProgress = (ProgressBar) v.findViewById(android.R.id.progress);
+
+        mMoreProgress = (ViewStub) v.findViewById(R.id.more_progress);
+        mMoreProgress.setLayoutResource(mMoreProgressId);
+        if (mMoreProgressId != 0)
+            mMoreProgress.inflate();
+        mMoreProgress.setVisibility(View.GONE);
 
         mEmpty = (ViewStub)v.findViewById(R.id.empty);
         mEmpty.setLayoutResource(mEmptyId);
@@ -166,6 +176,16 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
     public void showList() {
         hideProgress();
         mList.setVisibility(View.VISIBLE);
+    }
+
+    public void showMoreProgress() {
+        mMoreProgress.setVisibility(View.VISIBLE);
+
+    }
+
+    public void hideMoreProgress() {
+        mMoreProgress.setVisibility(View.GONE);
+
     }
 
     /**
@@ -270,8 +290,11 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
                          int totalItemCount) {
         if (((totalItemCount - firstVisibleItem - visibleItemCount) == ITEM_LEFT_TO_LOAD_MORE || (totalItemCount - firstVisibleItem - visibleItemCount) == 0 && totalItemCount > visibleItemCount) && !isLoadingMore) {
             isLoadingMore = true;
-            if (mOnMoreListener != null)
+            if (mOnMoreListener != null) {
+                mMoreProgress.setVisibility(View.VISIBLE);
                 mOnMoreListener.onMoreAsked(mList.getAdapter().getCount(), ITEM_LEFT_TO_LOAD_MORE, firstVisibleItem);
+
+            }
         }
     }
 
