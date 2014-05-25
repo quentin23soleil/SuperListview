@@ -21,7 +21,7 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
 
     protected int ITEM_LEFT_TO_LOAD_MORE = 10;
 
-    protected ProgressBar mProgress;
+    protected ViewStub mProgress;
     protected ViewStub mMoreProgress;
     protected AbsListView mList;
     protected ViewStub mEmpty;
@@ -45,6 +45,7 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
     protected SwipeRefreshLayout mPtrLayout;
 
     protected int mSuperListViewMainLayout;
+    private int mProgressId;
 
     public SwipeRefreshLayout getSwipeToRefresh() {
         return mPtrLayout;
@@ -85,6 +86,7 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
             mScrollbarStyle = a.getInt(R.styleable.superlistview_superlv__scrollbarStyle, -1);
             mEmptyId = a.getResourceId(R.styleable.superlistview_superlv__empty, 0);
             mMoreProgressId = a.getResourceId(R.styleable.superlistview_superlv__moreProgress, R.layout.view_more_progress);
+            mProgressId = a.getResourceId(R.styleable.superlistview_superlv__progress, R.layout.view_progress);
             mSelector = a.getResourceId(R.styleable.superlistview_superlv__listSelector, 0);
         }
         finally {
@@ -100,7 +102,10 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
         mPtrLayout = (SwipeRefreshLayout) v.findViewById(R.id.ptr_layout);
         mPtrLayout.setEnabled(false);
 
-        mProgress = (ProgressBar) v.findViewById(android.R.id.progress);
+        mProgress = (ViewStub) v.findViewById(android.R.id.progress);
+
+        mProgress.setLayoutResource(mProgressId);
+        mProgress.inflate();
 
         mMoreProgress = (ViewStub) v.findViewById(R.id.more_progress);
         mMoreProgress.setLayoutResource(mMoreProgressId);
