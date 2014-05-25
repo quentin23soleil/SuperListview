@@ -26,7 +26,7 @@ Just add it to you dependencies
 
 For release version:
 ```
-    compile 'com.quentindommerc.superlistview:library:1.5-2'
+    compile 'com.quentindommerc.superlistview:library:1.5.2'
 ```
 
 For snapshot version:
@@ -94,11 +94,11 @@ For snapshot version:
              <flag name="outsideOverlay" value="0x02000000"/>
              <flag name="outsideInset" value="0x03000000"/>
          </attr>
- 
+
          <!-- Layout to build a superList. Default values are  @layout/view_progress_listview for a list and
           @layout/view_progress_gridview for a grid-->
          <attr name="superlv_mainLayoutID" format="reference"/>
- 
+
 ```
 
 ##SuperListView Java Usage
