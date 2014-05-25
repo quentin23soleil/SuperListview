@@ -26,7 +26,7 @@ Just add it to you dependencies
 
 For release version:
 ```
-    compile 'com.quentindommerc.superlistview:library:1.5'
+    compile 'com.quentindommerc.superlistview:library:1.5-2'
 ```
 
 For snapshot version:
