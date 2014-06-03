@@ -75,7 +75,8 @@ public class SuperListview extends BaseSuperAbsListview {
                 mList.setPadding(mPaddingLeft, mPaddingTop, mPaddingRight, mPaddingBottom);
             }
 
-            mList.setScrollBarStyle(mScrollbarStyle);
+            if (mScrollbarStyle != -1)
+                mList.setScrollBarStyle(mScrollbarStyle);
         }
     }
 
