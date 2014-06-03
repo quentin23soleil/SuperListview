@@ -172,6 +172,8 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
      */
     public void showProgress() {
         hideList();
+        if (mEmptyId != 0)
+            mEmpty.setVisibility(View.GONE);
         mProgress.setVisibility(View.VISIBLE);
     }
 
