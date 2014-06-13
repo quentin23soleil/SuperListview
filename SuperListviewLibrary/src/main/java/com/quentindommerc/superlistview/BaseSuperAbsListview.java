@@ -136,25 +136,17 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
      * @param adapter
      */
     public void setAdapter(ListAdapter adapter) {
+        if (mList.getAdapter() != null) {
+            mList.getAdapter().unregisterDataSetObserver(mDatasetObserver);
+        }
         mList.setAdapter(adapter);
         mProgress.setVisibility(View.GONE);
         if (mEmpty != null && mEmptyId != 0)
             mList.setEmptyView(mEmpty);
         mList.setVisibility(View.VISIBLE);
         mPtrLayout.setRefreshing(false);
-        adapter.registerDataSetObserver( new DataSetObserver() {
-            @Override
-            public void onChanged() {
-                super.onChanged();
-                isLoadingMore = false;
-                mPtrLayout.setRefreshing(false);
-                if (mList.getAdapter().getCount() == 0 && mEmptyId != 0) {
-                    mEmpty.setVisibility(View.VISIBLE);
-                } else if (mEmptyId != 0){
-                    mEmpty.setVisibility(View.GONE);
-                }
-            }
-        });
+        if (adapter != null)
+            adapter.registerDataSetObserver(mDatasetObserver);
         if ((adapter == null || adapter.getCount() == 0) && mEmptyId != 0) {
             mEmpty.setVisibility(View.VISIBLE);
         }
@@ -261,6 +253,20 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
     public void onScrollStateChanged(AbsListView view, int scrollState) {
 
     }
+
+    private DataSetObserver mDatasetObserver = new DataSetObserver() {
+        @Override
+        public void onChanged() {
+            super.onChanged();
+            isLoadingMore = false;
+            mPtrLayout.setRefreshing(false);
+            if (mList.getAdapter().getCount() == 0 && mEmptyId != 0) {
+                mEmpty.setVisibility(View.VISIBLE);
+            } else if (mEmptyId != 0){
+                mEmpty.setVisibility(View.GONE);
+            }
+        }
+    };
 
     /**
      * Sets the More listener
