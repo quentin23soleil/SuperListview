@@ -139,7 +139,7 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
         if (mList.getAdapter() != null) {
             mList.getAdapter().unregisterDataSetObserver(mDatasetObserver);
         }
-        mList.setAdapter(adapter);
+        ((AdapterView<ListAdapter>)mList).setAdapter(adapter);
         mProgress.setVisibility(View.GONE);
         if (mEmpty != null && mEmptyId != 0)
             mList.setEmptyView(mEmpty);
