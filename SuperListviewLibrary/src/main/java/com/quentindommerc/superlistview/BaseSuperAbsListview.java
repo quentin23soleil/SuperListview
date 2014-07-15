@@ -25,6 +25,7 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
     protected ViewStub mMoreProgress;
     protected AbsListView mList;
     protected ViewStub mEmpty;
+    protected View mInflatedEmpty;
 
     protected float mDividerHeight;
     protected Drawable mDivider;
@@ -116,7 +117,7 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
         mEmpty = (ViewStub)v.findViewById(R.id.empty);
         mEmpty.setLayoutResource(mEmptyId);
         if (mEmptyId != 0)
-            mEmpty.inflate();
+            mInflatedEmpty = mEmpty.inflate();
         mEmpty.setVisibility(View.GONE);
 
         initAbsListView(v);
@@ -321,5 +322,15 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
 
     public void setOnTouchListener(OnTouchListener listener) {
         mList.setOnTouchListener(listener);
+    }
+    
+    
+    /**
+     * Get empty View
+     * @return Empty view inflated or null if it doesn't exist
+     */
+    public View getEmptyView()
+    {
+    	return mInflatedEmpty;
     }
 }
