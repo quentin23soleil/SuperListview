@@ -4,11 +4,10 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
-
 import com.quentindommerc.superlistview.superlistview.R;
 
 
@@ -80,6 +79,16 @@ public class SuperListview extends BaseSuperAbsListview {
         }
     }
 
+    @Override
+    public void setAdapter(ListAdapter adapter) {
+        getList().setAdapter(adapter);
+        super.setAdapter(adapter);
+    }
+
+    @Override
+    public void clear() {
+        getList().setAdapter(null);
+    }
 
     public void setupSwipeToDismiss(final SwipeDismissListViewTouchListener.DismissCallbacks listener, final boolean autoRemove) {
         SwipeDismissListViewTouchListener touchListener =
@@ -103,5 +112,4 @@ public class SuperListview extends BaseSuperAbsListview {
                 });
         mList.setOnTouchListener(touchListener);
     }
-
 }

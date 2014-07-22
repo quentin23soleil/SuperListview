@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.GridView;
 
+import android.widget.ListAdapter;
 import com.quentindommerc.superlistview.superlistview.R;
 
 
@@ -91,6 +92,17 @@ public class SuperGridview extends BaseSuperAbsListview {
 
             mList.setScrollBarStyle(mScrollbarStyle);
         }
+    }
+
+    @Override
+    public void setAdapter(ListAdapter adapter) {
+        getList().setAdapter(adapter);
+        super.setAdapter(adapter);
+    }
+
+    @Override
+    public void clear() {
+        getList().setAdapter(null);
     }
 
 }

@@ -1,32 +1,28 @@
 apply plugin: 'android-library'
 
-repositories {
-    mavenCentral()
+dependencies {
+    compile 'com.android.support:support-v4:20.0.0'
+    compile 'com.nineoldandroids:library:2.4.0'
 }
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.0.3"
+    compileSdkVersion 20
+    buildToolsVersion "20.0.0"
 
     defaultConfig {
-        minSdkVersion 8
-        targetSdkVersion 19
+        minSdkVersion 4
+        targetSdkVersion 20
         versionCode 1
         versionName "1.0"
     }
     buildTypes {
         release {
             runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
     lintOptions {
-        abortOnError false
+        abortOnError true
     }
 }
 
-dependencies {
-    compile 'com.android.support:support-v4:+'
-}
-
-apply from: '../maven_push.gradle'
+apply from: 'https://raw.githubusercontent.com/jpardogo/gradle-mvn-push/master/gradle-mvn-push.gradle'
