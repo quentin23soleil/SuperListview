@@ -38,16 +38,16 @@ import static com.nineoldandroids.view.ViewPropertyAnimator.animate;
  * dismissable. {@link ListView} is given special treatment because by default it handles touches
  * for its list items... i.e. it's in charge of drawing the pressed state (the list selector),
  * handling list item clicks, etc.
- *
+ * <p/>
  * <p>After creating the listener, the caller should also call
  * {@link ListView#setOnScrollListener(AbsListView.OnScrollListener)}, passing
  * in the scroll listener returned by {@link #makeScrollListener()}. If a scroll listener is
  * already assigned, the caller should still pass scroll changes through to this listener. This will
  * ensure that this {@link SwipeDismissListViewTouchListener} is paused during list view
  * scrolling.</p>
- *
+ * <p/>
  * <p>Example usage:</p>
- *
+ * <p/>
  * <pre>
  * SwipeDismissListViewTouchListener touchListener =
  *         new SwipeDismissListViewTouchListener(
@@ -63,10 +63,10 @@ import static com.nineoldandroids.view.ViewPropertyAnimator.animate;
  * listView.setOnTouchListener(touchListener);
  * listView.setOnScrollListener(touchListener.makeScrollListener());
  * </pre>
- *
+ * <p/>
  * <p>This class Requires API level 12 or later due to use of {@link
  * ViewPropertyAnimator}.</p>
- *
+ * <p/>
  * <p>For a generalized {@link View.OnTouchListener} that makes any view dismissable,
  * see {@link SwipeDismissTouchListener}.</p>
  *
@@ -94,7 +94,6 @@ public class SwipeDismissListViewTouchListener implements View.OnTouchListener {
     private VelocityTracker mVelocityTracker;
     private int             mDownPosition;
     private View            mDownView;
-    private AnimatorProxy   mDownViewProxy;
     private boolean         mPaused;
 
     /**
@@ -194,7 +193,6 @@ public class SwipeDismissListViewTouchListener implements View.OnTouchListener {
                     child.getHitRect(rect);
                     if (rect.contains(x, y)) {
                         mDownView = child;
-                        mDownViewProxy = AnimatorProxy.wrap(child);
                         break;
                     }
                 }
@@ -208,7 +206,6 @@ public class SwipeDismissListViewTouchListener implements View.OnTouchListener {
                         mVelocityTracker.addMovement(motionEvent);
                     } else {
                         mDownView = null;
-                        mDownViewProxy= null;
                     }
                 }
                 return false;
@@ -232,7 +229,6 @@ public class SwipeDismissListViewTouchListener implements View.OnTouchListener {
                 mDownX = 0;
                 mDownY = 0;
                 mDownView = null;
-                mDownViewProxy= null;
                 mDownPosition = ListView.INVALID_POSITION;
                 mSwiping = false;
                 break;
@@ -287,7 +283,6 @@ public class SwipeDismissListViewTouchListener implements View.OnTouchListener {
                 mDownX = 0;
                 mDownY = 0;
                 mDownView = null;
-                mDownViewProxy= null;
                 mDownPosition = ListView.INVALID_POSITION;
                 mSwiping = false;
                 break;
@@ -316,9 +311,17 @@ public class SwipeDismissListViewTouchListener implements View.OnTouchListener {
                 }
 
                 if (mSwiping) {
-                    mDownViewProxy.setTranslationX(deltaX - mSwipingSlop);
-                    mDownViewProxy.setAlpha(Math.max(0f, Math.min(1f,
+                    if(AnimatorProxy.NEEDS_PROXY) {
+                        AnimatorProxy proxy = AnimatorProxy.wrap(mDownView);
+                        proxy.setTranslationX(deltaX - mSwipingSlop);
+                        proxy.setAlpha(Math.max(0f, Math.min(1f,
+                                                                      1f - 2f * Math.abs(deltaX) / mViewWidth)));
+                    } else {
+                        mDownView.setTranslationX(deltaX - mSwipingSlop);
+                        mDownView.setAlpha(Math.max(0f, Math.min(1f,
                                                              1f - 2f * Math.abs(deltaX) / mViewWidth)));
+                    }
+
                     return true;
                 }
                 break;
@@ -375,8 +378,14 @@ public class SwipeDismissListViewTouchListener implements View.OnTouchListener {
                     ViewGroup.LayoutParams lp;
                     for (PendingDismissData pendingDismiss : mPendingDismisses) {
                         // Reset view presentation
-                        AnimatorProxy.wrap(pendingDismiss.view).setAlpha(1f);
-                        AnimatorProxy.wrap(pendingDismiss.view).setTranslationX(0);
+                        if (AnimatorProxy.NEEDS_PROXY) {
+                            AnimatorProxy.wrap(pendingDismiss.view).setAlpha(1f);
+                            AnimatorProxy.wrap(pendingDismiss.view).setTranslationX(0);
+                        } else {
+                            pendingDismiss.view.setAlpha(1f);
+                            pendingDismiss.view.setTranslationX(0);
+                        }
+
                         lp = pendingDismiss.view.getLayoutParams();
                         lp.height = originalHeight;
                         pendingDismiss.view.setLayoutParams(lp);
