@@ -138,11 +138,9 @@ list.setupSwipeToDismiss(new SwipeDismissListViewTouchListener.DismissCallbacks(
 
 ## Contributors
 
-Arasthel [Github](https://github.com/Arasthel)
-
-Gabriele Mariotti [Github](https://github.com/gabrielemariotti), [Google+](https://plus.google.com/+GabrieleMariotti/posts)
-
-Kochkin Artem [Github](https://github.com/kolipass)
+* Arasthel [Github](https://github.com/Arasthel)
+* Gabriele Mariotti [Github](https://github.com/gabrielemariotti), [Google+](https://plus.google.com/+GabrieleMariotti/posts)
+* Kochkin Artem [Github](https://github.com/kolipass)
 
 
 ##License
