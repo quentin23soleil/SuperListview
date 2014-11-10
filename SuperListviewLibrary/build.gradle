@@ -1,4 +1,4 @@
-apply plugin: 'android-library'
+apply plugin: 'com.android.library'
 
 dependencies {
     compile 'com.android.support:support-v4:20.0.0'
@@ -17,7 +17,7 @@ android {
     }
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled false
         }
     }
     lintOptions {
