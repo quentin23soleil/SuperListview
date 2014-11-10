@@ -25,111 +25,111 @@ Features built in:
 Just add it to you dependencies
 
 For release version:
-```
-    compile 'com.quentindommerc.superlistview:library:1.5.2'
+```groovy
+compile 'com.quentindommerc.superlistview:library:1.5.2'
 ```
 
 For snapshot version:
+```groovy
+'https://oss.sonatype.org/content/repositories/snapshots/'
 ```
-    https://oss.sonatype.org/content/repositories/snapshots/
-```
-```
-    compile 'com.quentindommerc.superlistview:library:1.5.1-SNAPSHOT'
+```groovy
+compile 'com.quentindommerc.superlistview:library:1.5.1-SNAPSHOT'
 ```
 ##Usage
 
 -	Use directly SuperListview:
 
 ```xml
-   <com.quentindommerc.superlistview.SuperListview
-            xmlns:superlistview="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            superlistview:superlv__listClipToPadding="false"
-            superlistview:superlv__listDivider="@android:color/transparent"
-            superlistview:superlv__listDividerHeight="10dp"
-            superlistview:superlv__listPadding="10dp"
-            superlistview:superlv__empty="@layout/emptyview"
-            superlistview:superlv__scrollbarStyle="outsideOverlay" >
-    </com.quentindommerc.superlistview.SuperListview>
+<com.quentindommerc.superlistview.SuperListview
+        xmlns:superlistview="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        superlistview:superlv__listClipToPadding="false"
+        superlistview:superlv__listDivider="@android:color/transparent"
+        superlistview:superlv__listDividerHeight="10dp"
+        superlistview:superlv__listPadding="10dp"
+        superlistview:superlv__empty="@layout/emptyview"
+        superlistview:superlv__scrollbarStyle="outsideOverlay" >
+</com.quentindommerc.superlistview.SuperListview>
 ```
 
 ### For Gridview
 ```xml
-    <com.quentindommerc.superlistview.SuperGridview
-            xmlns:superlistview="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            superlistview:superlv__listClipToPadding="false"
-            superlistview:superlv__listDivider="@android:color/transparent"
-            superlistview:superlv__listDividerHeight="10dp"
-            superlistview:superlv__listPadding="10dp"
-            superlistview:superlv__empty="@layout/emptyview"
-            superlistview:supergv__columns="2"
-            superlistview:supergv__verticalSpacing="10dp"
-            superlistview:supergv__horizontalSpacing="10dp"
-            superlistview:superlv__scrollbarStyle="outsideOverlay" >
-    </com.quentindommerc.superlistview.SuperGridview>
+<com.quentindommerc.superlistview.SuperGridview
+        xmlns:superlistview="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        superlistview:superlv__listClipToPadding="false"
+        superlistview:superlv__listDivider="@android:color/transparent"
+        superlistview:superlv__listDividerHeight="10dp"
+        superlistview:superlv__listPadding="10dp"
+        superlistview:superlv__empty="@layout/emptyview"
+        superlistview:supergv__columns="2"
+        superlistview:supergv__verticalSpacing="10dp"
+        superlistview:supergv__horizontalSpacing="10dp"
+        superlistview:superlv__scrollbarStyle="outsideOverlay" >
+</com.quentindommerc.superlistview.SuperGridview>
 ```
 
 -   Current Attributes supported:
 ```xml
-         <attr name="superlv__listSelector" format="reference"/>
-         <attr name="superlv__empty" format="reference"/>
-         <attr name="superlv__moreProgress" format="reference"/>
-         <attr name="superlv__progress" format="reference"/>
-         <attr name="superlv__listDivider" format="reference"/>
-         <attr name="superlv__listDividerHeight" format="dimension"/>
-         <attr name="superlv__listClipToPadding" format="boolean"/>
-         <attr name="superlv__listPadding" format="dimension"/>
-         <attr name="superlv__listPaddingTop" format="dimension"/>
-         <attr name="superlv__listPaddingBottom" format="dimension"/>
-         <attr name="superlv__listPaddingLeft" format="dimension"/>
-         <attr name="superlv__listPaddingRight" format="dimension"/>
-         <attr name="superlv__scrollbarStyle">
-             <flag name="insideOverlay" value="0x0"/>
-             <flag name="insideInset" value="0x01000000"/>
-             <flag name="outsideOverlay" value="0x02000000"/>
-             <flag name="outsideInset" value="0x03000000"/>
-         </attr>
+<attr name="superlv__listSelector" format="reference"/>
+<attr name="superlv__empty" format="reference"/>
+<attr name="superlv__moreProgress" format="reference"/>
+<attr name="superlv__progress" format="reference"/>
+<attr name="superlv__listDivider" format="reference"/>
+<attr name="superlv__listDividerHeight" format="dimension"/>
+<attr name="superlv__listClipToPadding" format="boolean"/>
+<attr name="superlv__listPadding" format="dimension"/>
+<attr name="superlv__listPaddingTop" format="dimension"/>
+<attr name="superlv__listPaddingBottom" format="dimension"/>
+<attr name="superlv__listPaddingLeft" format="dimension"/>
+<attr name="superlv__listPaddingRight" format="dimension"/>
+<attr name="superlv__scrollbarStyle">
+    <flag name="insideOverlay" value="0x0"/>
+    <flag name="insideInset" value="0x01000000"/>
+    <flag name="outsideOverlay" value="0x02000000"/>
+    <flag name="outsideInset" value="0x03000000"/>
+</attr>
 
-         <!-- Layout to build a superList. Default values are  @layout/view_progress_listview for a list and
-          @layout/view_progress_gridview for a grid-->
-         <attr name="superlv_mainLayoutID" format="reference"/>
+<!-- Layout to build a superList. Default values are  @layout/view_progress_listview for a list and
+@layout/view_progress_gridview for a grid-->
+<attr name="superlv_mainLayoutID" format="reference"/>
 
 ```
 
 ##SuperListView Java Usage
 
 ```java
-    list.setRefreshListener(new SwipeRefreshLayout.OnRefreshListener {
-      @Override
-      public void onRefresh() {
-          // Do your refresh
-      });
+list.setRefreshListener(new SwipeRefreshLayout.OnRefreshListener {
+  @Override
+  public void onRefresh() {
+      // Do your refresh
+  });
 
-    // when there is only 10 items to see in the list, this is triggered
-    list.setupMoreListener(new OnMoreListener() {
-      @Override
-      public void onMoreAsked(int numberOfItems, int numberBeforeMore, int currentItemPos) {
-        // Fetch more from Api or DB
-      }}, 10);
+// when there is only 10 items to see in the list, this is triggered
+list.setupMoreListener(new OnMoreListener() {
+  @Override
+  public void onMoreAsked(int numberOfItems, int numberBeforeMore, int currentItemPos) {
+    // Fetch more from Api or DB
+  }}, 10);
 
 
-    // the 2nd parameters is true if you want SuperListView to automatically
-    // delete the item from the listview or false if you don't
-    list.setupSwipeToDismiss(new SwipeDismissListViewTouchListener.DismissCallbacks() {
-      @Override
-      public boolean canDismiss(int position) {
-        return true
-      }
+// the 2nd parameters is true if you want SuperListView to automatically
+// delete the item from the listview or false if you don't
+list.setupSwipeToDismiss(new SwipeDismissListViewTouchListener.DismissCallbacks() {
+  @Override
+  public boolean canDismiss(int position) {
+    return true
+  }
 
-      @Override
-      public void onDismiss(ListView listView, int[] reverseSortedPositions) {
-        // Do your stuff like call an Api or update your db
-      }}, true);
+  @Override
+  public void onDismiss(ListView listView, int[] reverseSortedPositions) {
+    // Do your stuff like call an Api or update your db
+  }}, true);
 
 ```
 
