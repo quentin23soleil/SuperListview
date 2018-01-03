@@ -7,7 +7,7 @@ SuperListview
 ***Pull requests are answered with all my love and a cookie.***
 
 
-##Description
+## Description
 
 This library is making listview way more easy to use. No need to embed the listview in a framelayout to add the progressbar or the emptyview. **It's all right here**.
 
@@ -20,10 +20,10 @@ Features built in:
 - GridView with SuperGridView
 - Open to suggestions (and Pull Request ofc) for others :)
 
-####[Sample apk][apk] (pull to add item to the adapter)
+#### [Sample apk][apk] (pull to add item to the adapter)
 
 
-##Integration
+## Integration
 
 Just add it to you dependencies
 
@@ -39,7 +39,7 @@ For snapshot version:
 ```
     compile 'com.quentindommerc.superlistview:library:1.5.1-SNAPSHOT'
 ```
-##Usage
+## Usage
 
 -	Use directly SuperListview:
 
@@ -104,7 +104,7 @@ For snapshot version:
 
 ```
 
-##SuperListView Java Usage
+## SuperListView Java Usage
 
 ```java
     list.setRefreshListener(new SwipeRefreshLayout.OnRefreshListener {
@@ -137,7 +137,7 @@ For snapshot version:
 ```
 
 
-####[Sample java][sample java]
+#### [Sample java][sample java]
 
 ## Contributors
 
@@ -148,7 +148,7 @@ Gabriele Mariotti [Github](https://github.com/gabrielemariotti), [Google+](https
 Kochkin Artem [Github](https://github.com/kolipass)
 
 
-##License
+## License
 
     Copyright (c) 2014 Quentin Dommerc
 
