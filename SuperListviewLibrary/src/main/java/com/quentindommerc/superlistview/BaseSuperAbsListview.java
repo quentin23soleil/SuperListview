@@ -3,6 +3,7 @@ package com.quentindommerc.superlistview;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.database.DataSetObserver;
+import android.graphics.drawable.Drawable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -28,7 +29,7 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
     protected ViewStub    mEmpty;
 
     protected float   mDividerHeight;
-    protected int     mDivider;
+    protected Drawable mDivider;
     protected boolean mClipToPadding;
     protected int     mPadding;
     protected int     mPaddingTop;
@@ -78,7 +79,7 @@ public abstract class BaseSuperAbsListview extends FrameLayout implements AbsLis
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.superlistview);
         try {
             mClipToPadding = a.getBoolean(R.styleable.superlistview_superlv__listClipToPadding, false);
-            mDivider = a.getColor(R.styleable.superlistview_superlv__listDivider, 0);
+            mDivider = a.getDrawable(R.styleable.superlistview_superlv__listDivider);
             mDividerHeight = a.getDimension(R.styleable.superlistview_superlv__listDividerHeight, 0.0f);
             mPadding = (int) a.getDimension(R.styleable.superlistview_superlv__listPadding, -1.0f);
             mPaddingTop = (int) a.getDimension(R.styleable.superlistview_superlv__listPaddingTop, 0.0f);
